@@ -1,0 +1,15 @@
+input_type=tsplib
+input_file=rbg403.atsp
+random_towns=0,0
+
+symmetrical_matrix=false
+iterations=100
+
+show_results_disable_display=true
+
+run_sann=true
+sann_output=Asann_results.csv
+
+max_execution_time=20
+temperature_change_factor=0.9999
+cooling_method=Exponential
