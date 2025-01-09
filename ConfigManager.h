@@ -87,15 +87,15 @@ public:
                 // Odczyt aktualnej konfiguracji
                 double maxTime = std::stod(testConfig.at("max_execution_time"));
                 double tempFactor = std::stod(testConfig.at("temperature_change_factor"));
-                CoolingMethod coolingMethod = testConfig.at("cooling_method") == "Exponential" ? 
-                    Exponential : testConfig.at("cooling_method") == "Linear" ? 
-                    Linear : testConfig.at("cooling_method") == "Logarithmic" ? 
+                CoolingMethod coolingMethod = testConfig.at("cooling_method") == "exponential" ? 
+                    Exponential : testConfig.at("cooling_method") == "linear" ? 
+                    Linear : testConfig.at("cooling_method") == "logarithmic" ? 
                     Logarithmic : EmptyCooling;
-				NeighborGeneration neighborGen = testConfig.at("neighbor_generation") == "Swap" ?
-					Swap : testConfig.at("neighbor_generation") == "Insert" ?
+				NeighborGeneration neighborGen = testConfig.at("neighbor_generation_method") == "swap" ?
+					Swap : testConfig.at("neighbor_generation_method") == "insert" ?
 					Insert : EmptyNeighbor;
-				InitialPathGeneration pathGen = testConfig.at("initial_path_generation") == "Random" ?
-					Random : testConfig.at("initial_path_generation") == "NearestNeighbour" ?
+				InitialPathGeneration pathGen = testConfig.at("starting_path_method") == "random" ?
+					Random : testConfig.at("starting_path_method") == "nearestNeighbour" ?
 					NearestNeighbour : EmptyPath;
 
 				// Uruchomienie algorytmu z odpowiednimi parametrami

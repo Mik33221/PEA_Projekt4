@@ -5,7 +5,7 @@ show_results_disable_display=true
 
 number_of_runs=10
 temperature_change_factor=0.9999
-cooling_method=Exponential
+cooling_method=exponential
 neighbor_generation_method=swap
 starting_path_method=random
 

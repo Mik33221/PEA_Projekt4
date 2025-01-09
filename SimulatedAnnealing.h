@@ -65,6 +65,9 @@ private:
                 visited[nearest] = true;
             }
         }
+        else {
+            std::cout << "Niepoprawna metoda wyboru początkowej trasy\n";
+        }
     }
 
     // Generuje sąsiednie rozwiązanie poprzez zamianę dwóch miast
@@ -81,7 +84,7 @@ private:
             std::uniform_int_distribution<> dist(1, towns - 1);
             int from = dist(rng);
             int to = dist(rng);
-            
+
             if (from < to) {
                 int temp = newPath[from];
                 for (int i = from; i < to; i++) {
@@ -96,6 +99,9 @@ private:
                 }
                 newPath[to] = temp;
             }
+        }
+        else {
+            std::cout << "Niepoprawna metoda wyboru sąsiada\n";
         }
     }
 
