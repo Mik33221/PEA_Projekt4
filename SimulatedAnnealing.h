@@ -71,7 +71,7 @@ private:
         }
         delete[] currentPath;
         delete[] newPath;
-        return sum / iterations;
+        return double(sum) / iterations;
     }
 
 public:

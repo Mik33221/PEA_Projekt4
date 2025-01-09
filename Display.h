@@ -19,9 +19,9 @@ private:
 		system("cls");
 	}
 
-	void printProgressBar() {
+	void printProgressBar() const {
 		std::cout << "[";
-		int pos = barWidth * progress;
+		int pos = barWidth * int(progress);
 		for (int i = 0; i < barWidth; ++i) {
 			if (i < pos) std::cout << '=';
 			else if (i == pos) std::cout << ">";
@@ -30,7 +30,7 @@ private:
 		std::cout << "] " << int(progress * 100.0) << " %\n";
 	}
 
-	void printInstanceSize() {
+	void printInstanceSize() const {
 		std::cout << "Instance size: " << instanceSize << " cities\n";
 	}
 
@@ -42,15 +42,6 @@ private:
 		}
 	}
 
-	void printMemoryUsage() {
-		std::cout << "Memory usage: " << memoryUsage   << " B\n";
-	}
-
-	void updateMemoryUsage() {
-		PROCESS_MEMORY_COUNTERS_EX pmc;
-		GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc));
-		memoryUsage = pmc.WorkingSetSize;
-	}
 
 public:
 	Display(int barWidth) : barWidth(barWidth), progress(0), instanceSize(0), memoryUsage(0) {}
@@ -59,7 +50,6 @@ public:
 		progress = newProgress;
 		instanceSize = newInstanceSize;
 		algorithmTimes = newAlgorithmTimes;
-		updateMemoryUsage();
 
 		clearScreen();
 		printProgressBar();
@@ -68,6 +58,5 @@ public:
 		std::cout << std::endl;
 		printAlgorithmTimes();
 		std::cout << std::endl;
-		printMemoryUsage();
 	}
 };
