@@ -109,7 +109,7 @@ public:
                     for (int i = 0; i < improvement.path.size(); i++) {
                         outFiles[0] << improvement.path[i] << " ";
                     }
-                    outFiles[0] << "0," << std::endl;
+                    outFiles[0] << "0, " << std::endl;
                 }
                 auto last_found = improvements.back();
                 
@@ -123,7 +123,7 @@ public:
 
 
                 // Zapisz do osobnego pliku - tylko najlepsze rozwiązania
-                std::string bestFileName = testConfig.at("sann_output") + "Best";
+                std::string bestFileName = testConfig.at("sann_output") + "Best.csv";
                 std::ofstream bestFile(bestFileName, std::ios::app);
                 bestFile << last_found.cost << "," << last_found.timeFound << ",";
                 for (int i = 0; i < last_found.path.size(); i++) {
