@@ -122,8 +122,8 @@ private:
 public:
     SimulatedAnnealing(Matrix* matrix, CoolingMethod method,
         double tempFactor, double maxTime,
-        NeighborGeneration neighborGen = Swap,
-        InitialPathGeneration pathGen = Random)
+        NeighborGeneration neighborGen,
+        InitialPathGeneration pathGen)
         : rng(std::random_device{}()), 
           coolingMethod(method),
           temperatureChangeFactor(tempFactor), 
@@ -157,7 +157,7 @@ public:
 
     auto solve(bool output = false) {
         auto start_time = std::chrono::high_resolution_clock::now();
-        std::vector<SolutionRecord> improvements;  // Track all improvements
+		std::vector<SolutionRecord> improvements;  // Zapisujemy każdą poprawę rozwiązania
 
         int* currentPath = new int[towns];
         int* newPath = new int[towns];

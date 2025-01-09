@@ -91,9 +91,15 @@ public:
                     Exponential : testConfig.at("cooling_method") == "Linear" ? 
                     Linear : testConfig.at("cooling_method") == "Logarithmic" ? 
                     Logarithmic : EmptyCooling;
+				NeighborGeneration neighborGen = testConfig.at("neighbor_generation") == "Swap" ?
+					Swap : testConfig.at("neighbor_generation") == "Insert" ?
+					Insert : EmptyNeighbor;
+				InitialPathGeneration pathGen = testConfig.at("initial_path_generation") == "Random" ?
+					Random : testConfig.at("initial_path_generation") == "NearestNeighbour" ?
+					NearestNeighbour : EmptyPath;
 
 				// Uruchomienie algorytmu z odpowiednimi parametrami
-                SimulatedAnnealing sann(matrix, coolingMethod, tempFactor, maxTime);
+                SimulatedAnnealing sann(matrix, coolingMethod, tempFactor, maxTime, neighborGen, pathGen);
                 auto result = 
                     sann.solve(testConfig.at("show_results_disable_display") == "true");
 
@@ -111,7 +117,7 @@ public:
                     }
                     outFiles[0] << "0, " << std::endl;
                 }
-                auto last_found = improvements.back();
+                auto& last_found = improvements.back();
                 
                 // Oddzielenie wyników kolejnych uruchomień
                 outFiles[0] << "===," << last_found.cost << "," << last_found.timeFound << ",";
