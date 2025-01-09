@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Aftv170_results.csv
+/Aftv47_results.csv
+/Aftv170_results.csvBest.csv
+/Aftv47_results.csvBest.csv
+/Arbg403_results.csv
+/Arbg403_results.csvBest.csv
