@@ -4,26 +4,34 @@ input_type=tsplib
 show_results_disable_display=true
 
 number_of_runs=10
-temperature_change_factor=0.9999
-cooling_method=exponential
-neighbor_generation_method=swap
+temperature_change_factor=0.001
+cooling_method=logarithmic
+neighbor_generation_method=insert
 starting_path_method=random
+max_execution_time=120
+
 
 input_file=ftv47.atsp
+
+number_of_runs=1
 sann_output=Aftv47_results.csv
 max_execution_time=1
+temperature_change_factor=0.001
 run_sann=true
 
 
 input_file=ftv170.atsp
+
 sann_output=Aftv170_results.csv
-max_execution_time=3
-temperature_change_factor=2
+max_execution_time=60
 run_sann=true
 
 
 input_file=rbg403.atsp
+
+number_of_runs=1
 sann_output=Arbg403_results.csv
-max_execution_time=5
-temperature_change_factor=1
+max_execution_time=1
+//temperature_change_factor=0.99995
+//neighbor_generation_method=swap
 run_sann=true

@@ -95,7 +95,7 @@ public:
 					Swap : testConfig.at("neighbor_generation_method") == "insert" ?
 					Insert : EmptyNeighbor;
 				InitialPathGeneration pathGen = testConfig.at("starting_path_method") == "random" ?
-					Random : testConfig.at("starting_path_method") == "nearestNeighbour" ?
+					Random : testConfig.at("starting_path_method") == "nearestNeighbor" ?
 					NearestNeighbour : EmptyPath;
 
 				// Uruchomienie algorytmu z odpowiednimi parametrami
@@ -125,7 +125,7 @@ public:
                     outFiles[0] << last_found.path[i] << " ";
                 }
                 outFiles[0] << "0, " << std::endl << std::endl;
-                std::cout << last_found.cost << std::endl;
+                std::cout << "C= " << last_found.cost << ", T= " << final_temp << std::endl << std::endl;
 
 
                 // Zapisz do osobnego pliku - tylko najlepsze rozwiązania

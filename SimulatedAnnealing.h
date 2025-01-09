@@ -44,7 +44,7 @@ private:
         }
         else if (initialPathMethod == NearestNeighbour) {
             std::vector<bool> visited(towns, false);
-            path[0] = 0;  // Start from city 0
+            path[0] = 0;  // Start od miasta 0
             visited[0] = true;
 
             for (int i = 1; i < towns; i++) {
@@ -145,6 +145,7 @@ public:
         std::cout << "Temperatura poczatkowa: " << startingTemperature << std::endl;
         std::cout << "Funkcja schladzania:    " << 
             (coolingMethod == Exponential ? "wykladnicza" : 
+             coolingMethod == Logarithmic ? "logarytmiczna" : 
              coolingMethod == Linear ? "liniowa" : "brak") << "\t\t";
         std::cout << "Stala alfa: " << temperatureChangeFactor << std::endl;
         std::cout << "Sposob generacji sasiada: " << 
@@ -183,10 +184,10 @@ public:
         });
 
         double temperature = startingTemperature;
-        int iterationsPerTemperature = 100;
+		int iterationsPerTemperature = 1000;    // Zgodnie z zaleceniami od prowadzącego
         int iterationCount = 0;
 
-        while (true) {
+        while (temperature > 0.05) {
             auto current_time = std::chrono::high_resolution_clock::now();
             auto elapsed_seconds = std::chrono::duration_cast<std::chrono::seconds>(
                 current_time - start_time).count();
@@ -210,7 +211,7 @@ public:
                         bestCost = currentCost;
                         std::copy(currentPath, currentPath + towns, bestPath);
                         
-                        // Record improvement
+                        // Zapisz w tabeli
                         auto improvement_time = std::chrono::duration_cast<std::chrono::milliseconds>(
                             std::chrono::high_resolution_clock::now() - start_time).count();
                         
@@ -233,7 +234,7 @@ public:
                     temperature -= temperatureChangeFactor;
                     break;
                 case Logarithmic:
-                    temperature = startingTemperature / (1 + log(100*iterationCount + 1));
+                    temperature = startingTemperature / (1 + log(temperatureChangeFactor*iterationCount + 1));
                     break;
                 default:
 					std::cout << "Niepoprawna metoda chłodzenia\n";
