@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="Display.h" />
     <ClInclude Include="ConfigManager.h" />
+    <ClInclude Include="enums.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="SimulatedAnnealing.h" />
   </ItemGroup>

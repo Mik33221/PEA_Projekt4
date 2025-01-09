@@ -9,7 +9,7 @@
 
 int main()
 {
-	srand(time(NULL));
+	srand(int(time(NULL)));
 
 	ConfigManager config("config.txt");
     config.executeAlgorithms();
